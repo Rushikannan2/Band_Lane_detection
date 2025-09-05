@@ -1,24 +1,65 @@
-# Logs
-logs
+# =========================
+# Python / Django
+# =========================
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+db.sqlite3
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+media/
+staticfiles/
+.env
 
-node_modules
-dist
-dist-ssr
-*.local
+# =========================
+# Virtual Environment
+# =========================
+venv/
+ENV/
+*.env
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# =========================
+# Node / JS (if using Tailwind etc.)
+# =========================
+node_modules/
+package-lock.json
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS Files
+# =========================
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# =========================
+# Test / Generated Files
+# =========================
+test_*.py
+*_test.py
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.mp4
+
+# =========================
+# Project Specific
+# =========================
+# Ignore algorithm & experimental files
+ALGORITHMS_AND_FILES.md
+create_test_image.py
+create_better_test_image.py
+test_analysis.py
+realistic_test_gel.png
+test_gel_sample.png
+project_structure.txt
+project_structure2.txt
+TROUBLESHOOTING.md
