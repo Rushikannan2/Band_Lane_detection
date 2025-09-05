@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gel Electrophoresis Analysis Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <style>
+        /* Fallback CSS in case Tailwind is not applied */
+        nav a {
+            margin: 0 12px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
+                </div>
+                <!-- Added space-x-10 for larger spacing -->
+                <div class="flex items-center space-x-10">
+                    <a href="{% url 'home' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forensics Analysis</a>
+                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
+                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">Gel Electrophoresis Analysis Platform</h1>
+            <p class="text-xl text-gray-600 mb-8">Advanced DNA analysis using computer vision and machine learning</p>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">About This Project</h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    This platform represents a breakthrough in automated gel electrophoresis analysis, 
+                    combining advanced OpenCV computer vision techniques with sophisticated pattern recognition 
+                    algorithms to provide accurate, fast, and reliable DNA analysis.
+                </p>
+                <p class="text-gray-600 mb-6">
+                    Gel electrophoresis is a laboratory technique used to separate DNA, RNA, or protein molecules 
+                    based on their size and electrical charge. Our platform automates the analysis process, 
+                    providing instant, accurate results with detailed disease predictions and forensic matching capabilities.
+                </p>
+                <div class="grid md:grid-cols-2 gap-8 mt-8">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Key Applications</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Genetic disease diagnosis</li>
+                            <li>• Forensic DNA analysis</li>
+                            <li>• Research and development</li>
+                            <li>• Quality control in labs</li>
+                            <li>• Educational purposes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Technology Stack</h3>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Python & Django</li>
+                            <li>• OpenCV for image processing</li>
+                            <li>• SciPy & NumPy for analysis</li>
+                            <li>• Tailwind CSS for UI</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access Cards -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="text-4xl mb-4">🧬</div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Disease Prediction</h3>
+                <p class="text-gray-600 mb-6">Upload a DNA gel image to detect genetic disease markers and get detailed analysis with specific disease names, symptoms, and medical recommendations.</p>
+                <a href="{% url 'disease_prediction' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                    Start Disease Analysis
+                </a>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+                <div class="text-4xl mb-4">🔍</div>
+                <h3 class="text-2xl font-bold text-green-600 mb-4">Forensics Analysis</h3>
+                <p class="text-gray-600 mb-6">Compare DNA samples with advanced matching algorithms for forensic investigations, paternity testing, and genetic similarity analysis.</p>
+                <a href="{% url 'forensics_analysis' %}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                    Start Comparison Analysis
+                </a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-8">Key Features</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">🔬</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Advanced Band Detection</h4>
+                    <p class="text-gray-600">Hybrid algorithms combining contour analysis and peak finding for high accuracy</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Quantitative Analysis</h4>
+                    <p class="text-gray-600">Precise band counts, match scores, and statistical analysis</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">⚡</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Real-time Processing</h4>
+                    <p class="text-gray-600">Fast analysis with optimized OpenCV algorithms</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

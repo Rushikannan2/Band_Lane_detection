@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forensics Analysis - Gel Analysis Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">Forensics Analysis</a>
+                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
+                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Forensics Analysis</h1>
+            <p class="text-lg text-gray-600">Compare DNA samples with advanced matching algorithms</p>
+        </div>
+
+        <!-- Main Content -->
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <!-- Intro -->
+                <div class="text-center mb-8">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h2 class="text-2xl font-bold text-green-600 mb-4">DNA Comparison Analysis</h2>
+                    <p class="text-gray-600">Upload two DNA gel images to perform forensic analysis and genetic similarity comparison</p>
+                </div>
+                
+                <!-- Upload Form -->
+                <form method="post" action="{% url 'forensics_analysis' %}" enctype="multipart/form-data" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <label for="{{ forensics_form.crime_scene_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                            {{ forensics_form.crime_scene_image.label }}
+                        </label>
+                        {{ forensics_form.crime_scene_image }}
+                        {% if forensics_form.crime_scene_image.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ forensics_form.crime_scene_image.help_text }}</p>
+                        {% endif %}
+                        {% if forensics_form.crime_scene_image.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in forensics_form.crime_scene_image.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <label for="{{ forensics_form.suspect_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                            {{ forensics_form.suspect_image.label }}
+                        </label>
+                        {{ forensics_form.suspect_image }}
+                        {% if forensics_form.suspect_image.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ forensics_form.suspect_image.help_text }}</p>
+                        {% endif %}
+                        {% if forensics_form.suspect_image.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in forensics_form.suspect_image.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                        Compare DNA Samples
+                    </button>
+                </form>
+
+                <!-- Analysis Features -->
+                <div class="mt-8 p-6 bg-green-50 rounded-lg">
+                    <h3 class="text-lg font-semibold text-green-800 mb-4">Analysis Features</h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <ul class="text-sm text-green-700 space-y-2">
+                            <li>• Match score calculation</li>
+                            <li>• Pattern similarity analysis</li>
+                            <li>• Statistical confidence levels</li>
+                        </ul>
+                        <ul class="text-sm text-green-700 space-y-2">
+                            <li>• Visual comparison overlays</li>
+                            <li>• Band position analysis</li>
+                            <li>• Forensic reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Applications -->
+                <div class="mt-8">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Applications</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl mb-2">🕵️</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Forensic Investigation</h4>
+                            <p class="text-sm text-gray-600">Compare crime scene evidence with suspect samples</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl mb-2">👨‍👩‍👧‍👦</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Paternity Testing</h4>
+                            <p class="text-sm text-gray-600">Determine genetic relationships between individuals</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-lg">
+                            <div class="text-2xl mb-2">🔬</div>
+                            <h4 class="font-semibold text-gray-800 mb-2">Research</h4>
+                            <p class="text-sm text-gray-600">Genetic similarity studies and population analysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

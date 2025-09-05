@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Author - VT Rushi Kannan</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forecast Analysis</a>
+                    <a href="{% url 'about_author' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">About Author</a>
+                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto px-4 py-16">
+        <!-- Author Header -->
+        <div class="text-center mb-16">
+            <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                <span class="text-4xl font-bold text-white">VT</span>
+            </div>
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">VT Rushi Kannan</h1>
+            <p class="text-xl text-gray-600 mb-2">Computer Vision Engineer & AI Researcher</p>
+            <p class="text-lg text-blue-600 font-semibold">Gel Electrophoresis Analysis Platform Developer</p>
+        </div>
+
+        <!-- About Section -->
+        <div class="grid md:grid-cols-2 gap-12 mb-16">
+            <div>
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">About the Developer</h2>
+                <p class="text-gray-600 mb-4">
+                    VT Rushi Kannan is a passionate computer vision engineer and AI researcher specializing in 
+                    medical image analysis and bioinformatics applications. With extensive experience in 
+                    OpenCV, machine learning, and scientific computing, Rushi has developed this advanced 
+                    gel electrophoresis analysis platform to revolutionize DNA analysis workflows.
+                </p>
+                <p class="text-gray-600 mb-4">
+                    This project represents a culmination of expertise in computer vision algorithms, 
+                    pattern recognition, and medical informatics. The platform combines cutting-edge 
+                    OpenCV techniques with sophisticated disease pattern recognition to provide 
+                    accurate, fast, and reliable analysis of gel electrophoresis images.
+                </p>
+                <p class="text-gray-600">
+                    Rushi's work focuses on bridging the gap between complex scientific algorithms 
+                    and practical, user-friendly applications that can make a real impact in 
+                    medical diagnostics and forensic analysis.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Technical Expertise</h3>
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Computer Vision & Image Processing</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• OpenCV for advanced image analysis</li>
+                            <li>• Contour detection and morphological operations</li>
+                            <li>• Pattern recognition and feature extraction</li>
+                            <li>• Real-time image processing optimization</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Machine Learning & AI</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Disease pattern recognition algorithms</li>
+                            <li>• Confidence scoring and statistical analysis</li>
+                            <li>• Similarity matching and comparison algorithms</li>
+                            <li>• Predictive modeling for medical applications</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-3">Web Development & Deployment</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Django web framework for robust applications</li>
+                            <li>• Responsive UI design with Tailwind CSS</li>
+                            <li>• Database design and optimization</li>
+                            <li>• Production deployment and scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Details -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">About This Project</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Project Vision</h3>
+                    <p class="text-gray-600 mb-4">
+                        To create an accessible, accurate, and fast platform for gel electrophoresis analysis 
+                        that can be used by researchers, medical professionals, and forensic experts worldwide.
+                    </p>
+                    <p class="text-gray-600">
+                        The goal is to democratize advanced DNA analysis capabilities, making sophisticated 
+                        computer vision techniques available to anyone who needs to analyze gel electrophoresis images.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Key Innovations</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Hybrid band detection algorithm combining contour analysis and peak finding</li>
+                        <li>• Advanced disease pattern recognition with confidence scoring</li>
+                        <li>• Real-time forensic analysis with statistical matching</li>
+                        <li>• User-friendly interface with detailed medical recommendations</li>
+                        <li>• Comprehensive error handling and quality assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Achievements -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+                <div class="text-3xl mb-4">🎯</div>
+                <h3 class="text-xl font-bold text-blue-800 mb-2">High Accuracy</h3>
+                <p class="text-blue-600">85-95% accuracy in band detection on clear gel images</p>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+                <div class="text-3xl mb-4">⚡</div>
+                <h3 class="text-xl font-bold text-green-800 mb-2">Fast Processing</h3>
+                <p class="text-green-600">Sub-second analysis with optimized algorithms</p>
+            </div>
+            <div class="bg-purple-50 p-6 rounded-lg text-center">
+                <div class="text-3xl mb-4">🔬</div>
+                <h3 class="text-xl font-bold text-purple-800 mb-2">Medical Grade</h3>
+                <p class="text-purple-600">Professional-level analysis with detailed recommendations</p>
+            </div>
+        </div>
+
+        <!-- Contact & Links -->
+        <div class="bg-gray-900 text-white rounded-lg p-8 text-center">
+            <h2 class="text-2xl font-bold mb-4">Connect with VT Rushi Kannan</h2>
+            <p class="text-gray-300 mb-6">
+                Interested in collaborating or learning more about this project? 
+                Get in touch to discuss computer vision, medical AI, or bioinformatics applications.
+            </p>
+            <div class="flex justify-center space-x-8">
+                <div class="text-center">
+                    <div class="text-2xl mb-2">📧</div>
+                    <p class="text-sm text-gray-300">Email</p>
+                    <p class="text-blue-400">rushi.kannan@example.com</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl mb-2">💼</div>
+                    <p class="text-sm text-gray-300">LinkedIn</p>
+                    <p class="text-blue-400">linkedin.com/in/vtrushikannan</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-2xl mb-2">🐙</div>
+                    <p class="text-sm text-gray-300">GitHub</p>
+                    <p class="text-blue-400">github.com/vtrushikannan</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

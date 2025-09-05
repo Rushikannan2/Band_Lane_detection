@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Gel Analysis Platform</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forecast Analysis</a>
+                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
+                    <a href="{% url 'faqs' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 py-16">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
+            <p class="text-lg text-gray-600">Find answers to common questions about the Gel Electrophoresis Analysis Platform</p>
+        </div>
+
+        <!-- FAQ Sections -->
+        <div class="space-y-8">
+            <!-- General Questions -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">General Questions</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What is gel electrophoresis?</h3>
+                        <p class="text-gray-600">
+                            Gel electrophoresis is a laboratory technique used to separate DNA, RNA, or protein molecules 
+                            based on their size and electrical charge. The molecules are placed in a gel matrix and an 
+                            electric current is applied, causing them to migrate through the gel at different rates.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How does this platform work?</h3>
+                        <p class="text-gray-600">
+                            Our platform uses advanced computer vision algorithms to automatically detect and analyze 
+                            DNA bands in gel electrophoresis images. It combines OpenCV image processing with machine 
+                            learning pattern recognition to provide accurate disease predictions and forensic analysis.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What file formats are supported?</h3>
+                        <p class="text-gray-600">
+                            The platform supports common image formats including PNG, JPG, JPEG, and TIFF. 
+                            For best results, we recommend using high-quality PNG images with good contrast.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disease Prediction Questions -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Disease Prediction</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What diseases can the platform detect?</h3>
+                        <p class="text-gray-600">
+                            The platform can detect patterns associated with several genetic diseases including:
+                            Sickle Cell Anemia, Cystic Fibrosis, Huntington Disease, Muscular Dystrophy, 
+                            Thalassemia, and Tay-Sachs Disease. It also identifies normal patterns.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How accurate are the disease predictions?</h3>
+                        <p class="text-gray-600">
+                            The platform achieves 85-95% accuracy on clear, high-quality gel images. Accuracy may vary 
+                            depending on image quality, band clarity, and the specific disease pattern. Results should 
+                            always be confirmed by medical professionals.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I use this for medical diagnosis?</h3>
+                        <p class="text-gray-600">
+                            <strong>No.</strong> This platform is for research and educational purposes only. 
+                            It should not be used for medical diagnosis or treatment decisions. Always consult 
+                            qualified medical professionals for any health-related concerns.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Analysis Questions -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Forecast Analysis</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What is the match score?</h3>
+                        <p class="text-gray-600">
+                            The match score is a percentage (0-100%) that indicates the similarity between two DNA samples. 
+                            It's calculated based on band count similarity, band position alignment, and pattern matching. 
+                            Higher scores indicate greater similarity.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How reliable is the forensic analysis?</h3>
+                        <p class="text-gray-600">
+                            The forensic analysis provides statistical confidence levels and similarity scores. 
+                            However, it should be used as a preliminary screening tool and not as definitive evidence. 
+                            Professional forensic analysis should be conducted for legal purposes.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I use this for paternity testing?</h3>
+                        <p class="text-gray-600">
+                            While the platform can compare DNA patterns, it's not suitable for legal paternity testing. 
+                            For official paternity testing, use certified laboratories that follow legal standards 
+                            and provide court-admissible results.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Questions -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Questions</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What if my image has poor quality?</h3>
+                        <p class="text-gray-600">
+                            The platform works best with clear, high-contrast images. If your image has poor quality, 
+                            the analysis may be less accurate. Try to use images with good lighting, clear bands, 
+                            and minimal background noise for best results.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How long does analysis take?</h3>
+                        <p class="text-gray-600">
+                            Most analyses complete in under 1 second. The processing time depends on image size and 
+                            complexity, but our optimized algorithms ensure fast results for typical gel images.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Is my data secure?</h3>
+                        <p class="text-gray-600">
+                            Yes, all uploaded images are processed locally and are not stored permanently on our servers. 
+                            Images are temporarily processed and then deleted. We prioritize user privacy and data security.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Troubleshooting</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What if no bands are detected?</h3>
+                        <p class="text-gray-600">
+                            If no bands are detected, try: 1) Using a higher quality image, 2) Ensuring the image has 
+                            good contrast, 3) Checking that the bands are clearly visible, 4) Using a different image 
+                            format if possible.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">The analysis seems incorrect. What should I do?</h3>
+                        <p class="text-gray-600">
+                            If the analysis results seem incorrect, try: 1) Uploading a clearer image, 2) Ensuring 
+                            the image is properly oriented, 3) Checking that the gel has visible bands, 4) Contacting 
+                            support if the issue persists.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I get help with using the platform?</h3>
+                        <p class="text-gray-600">
+                            Yes! If you need assistance, please contact us through the About Author page. We're happy 
+                            to help with technical issues, usage questions, or feature requests.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="mt-16 bg-blue-50 rounded-lg p-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
+            <p class="text-gray-600 mb-6">
+                If you can't find the answer you're looking for, feel free to reach out to us.
+            </p>
+            <a href="{% url 'about_author' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                Contact VT Rushi Kannan
+            </a>
+        </div>
+    </div>
+</body>
+</html>

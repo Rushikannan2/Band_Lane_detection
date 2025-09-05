@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore - Gel Electrophoresis Analysis</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800">Gel Analysis Platform</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="{% url 'explore' %}" class="text-blue-600 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium">Explore</a>
+                    <a href="{% url 'about' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Explore Analysis Tools</h1>
+            <p class="text-lg text-gray-600">Choose your analysis type and upload gel electrophoresis images</p>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            <!-- Disease Prediction Section -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-4">🧬</div>
+                    <h2 class="text-2xl font-bold text-blue-600 mb-2">Disease Prediction</h2>
+                    <p class="text-gray-600">Upload a DNA gel image to detect genetic disease markers</p>
+                </div>
+                
+                <form method="post" action="{% url 'disease_prediction' %}" enctype="multipart/form-data" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <label for="{{ disease_form.gel_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                            {{ disease_form.gel_image.label }}
+                        </label>
+                        {{ disease_form.gel_image }}
+                        {% if disease_form.gel_image.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ disease_form.gel_image.help_text }}</p>
+                        {% endif %}
+                        {% if disease_form.gel_image.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in disease_form.gel_image.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                        Analyze for Disease
+                    </button>
+                </form>
+
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2">Supported Diseases:</h4>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• Sickle Cell Anemia</li>
+                        <li>• Cystic Fibrosis</li>
+                        <li>• Huntington Disease</li>
+                        <li>• Muscular Dystrophy</li>
+                        <li>• Thalassemia</li>
+                        <li>• Tay-Sachs Disease</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Forensics Section -->
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-4">🔍</div>
+                    <h2 class="text-2xl font-bold text-green-600 mb-2">Forensics Analysis</h2>
+                    <p class="text-gray-600">Compare crime scene and suspect DNA samples</p>
+                </div>
+                
+                <form method="post" action="{% url 'forensics_analysis' %}" enctype="multipart/form-data" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <label for="{{ forensics_form.crime_scene_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                            {{ forensics_form.crime_scene_image.label }}
+                        </label>
+                        {{ forensics_form.crime_scene_image }}
+                        {% if forensics_form.crime_scene_image.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ forensics_form.crime_scene_image.help_text }}</p>
+                        {% endif %}
+                        {% if forensics_form.crime_scene_image.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in forensics_form.crime_scene_image.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <label for="{{ forensics_form.suspect_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                            {{ forensics_form.suspect_image.label }}
+                        </label>
+                        {{ forensics_form.suspect_image }}
+                        {% if forensics_form.suspect_image.help_text %}
+                            <p class="mt-1 text-sm text-gray-500">{{ forensics_form.suspect_image.help_text }}</p>
+                        {% endif %}
+                        {% if forensics_form.suspect_image.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in forensics_form.suspect_image.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                        Compare DNA Samples
+                    </button>
+                </form>
+
+                <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                    <h4 class="font-semibold text-green-800 mb-2">Analysis Features:</h4>
+                    <ul class="text-sm text-green-700 space-y-1">
+                        <li>• Match score calculation</li>
+                        <li>• Pattern similarity analysis</li>
+                        <li>• Statistical confidence levels</li>
+                        <li>• Visual comparison overlays</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Images Section -->
+        <div class="mt-16 max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Sample Images for Testing</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Test Image 1</h4>
+                    <p class="text-gray-600 mb-4">realistic_test_gel.png</p>
+                    <p class="text-sm text-gray-500">4 lanes with 3, 2, 4, and 1 bands respectively. Perfect for testing disease prediction.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow text-center">
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Test Image 2</h4>
+                    <p class="text-gray-600 mb-4">test_gel_sample.png</p>
+                    <p class="text-sm text-gray-500">Basic test image with 3 lanes and 6 bands total. Good for forensics testing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="mt-16 max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">How It Works</h3>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">📤</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">1. Upload Image</h4>
+                    <p class="text-gray-600">Upload your gel electrophoresis image in PNG or JPG format</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">🔬</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">2. AI Analysis</h4>
+                    <p class="text-gray-600">Advanced algorithms detect bands and analyze patterns</p>
+                </div>
+                <div class="text-center p-6 bg-white rounded-lg shadow">
+                    <div class="text-3xl mb-4">📊</div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">3. Get Results</h4>
+                    <p class="text-gray-600">Receive detailed analysis with visual overlays and predictions</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

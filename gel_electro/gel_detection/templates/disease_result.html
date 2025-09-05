@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Prediction Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
+                </div>
+                <div class="flex items-center space-x-10">
+                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forensics Analysis</a>
+                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
+                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Disease Prediction Results</h1>
+            <a href="{% url 'disease_prediction' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+                ← Back to Disease Prediction
+            </a>
+        </div>
+
+        <!-- Results Card -->
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
+            
+            <!-- Prediction Result -->
+            <div class="text-center mb-8">
+                <div class="inline-block p-6 rounded-lg {% if 'Normal' not in disease_info.name %}bg-red-100 border-2 border-red-300{% else %}bg-green-100 border-2 border-green-300{% endif %}">
+                    <h2 class="text-2xl font-bold {% if 'Normal' not in disease_info.name %}text-red-800{% else %}text-green-800{% endif %} mb-2">
+                        {{ prediction }}
+                    </h2>
+                    <p class="text-lg {% if 'Normal' not in disease_info.name %}text-red-600{% else %}text-green-600{% endif %} mb-2">
+                        Bands Detected: {{ band_count }} | Lanes: {{ lane_count }}
+                    </p>
+                    <p class="text-sm {% if 'Normal' not in disease_info.name %}text-red-500{% else %}text-green-500{% endif %}">
+                        Confidence: {{ confidence }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Disease Information -->
+            {% if 'Normal' not in disease_info.name %}
+            <div class="max-w-4xl mx-auto bg-yellow-50 rounded-lg p-6 mb-8 border-l-4 border-yellow-400">
+                <h3 class="text-xl font-bold text-yellow-800 mb-4">Disease Information</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-yellow-700 mb-2">Common Symptoms:</h4>
+                        <ul class="text-sm text-yellow-600 space-y-1">
+                            {% for symptom in disease_info.symptoms %}
+                            <li>• {{ symptom }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-yellow-700 mb-2">Pattern Analysis:</h4>
+                        <ul class="text-sm text-yellow-600 space-y-1">
+                            <li>• Band Count Match: {% if disease_info.pattern_match.band_count %}✓{% else %}✗{% endif %}</li>
+                            <li>• Lane Count Match: {% if disease_info.pattern_match.lane_count %}✓{% else %}✗{% endif %}</li>
+                            <li>• Confidence Score: {{ disease_info.confidence_score|floatformat:1 }}%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="max-w-4xl mx-auto bg-blue-50 rounded-lg p-6 mb-8 border-l-4 border-blue-400">
+                <h3 class="text-xl font-bold text-blue-800 mb-4">Recommendations</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">Immediate Actions:</h4>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            {% for action in recommendations.immediate_actions %}
+                            <li>• {{ action }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-blue-700 mb-2">Follow-up Tests:</h4>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            {% for test in recommendations.follow_up_tests %}
+                            <li>• {{ test }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-4 p-3 bg-blue-100 rounded">
+                    <p class="text-sm text-blue-800">
+                        <strong>Urgency Level:</strong> 
+                        <span class="font-semibold {% if recommendations.urgency_level == 'high' %}text-red-600{% elif recommendations.urgency_level == 'medium' %}text-yellow-600{% else %}text-green-600{% endif %}">
+                            {{ recommendations.urgency_level|title }}
+                        </span>
+                        {% if recommendations.consultation_required %} - Consultation Required{% endif %}
+                    </p>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Images Comparison -->
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <!-- Original Image -->
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Original Image</h3>
+                    <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <img src="{{ original_image }}" alt="Original DNA Gel Image" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Uploaded DNA gel electrophoresis image</p>
+                </div>
+
+                <!-- Processed Image -->
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Processed Image with Band Detection</h3>
+                    <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <img src="{{ processed_image }}" alt="Processed DNA Gel Image with Bands" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Detected bands highlighted in color</p>
+                </div>
+            </div>
+
+            <!-- Analysis Details -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Analysis Details</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-2">Detection Method</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Grayscale conversion</li>
+                            <li>• Gaussian blur for noise reduction</li>
+                            <li>• Adaptive thresholding</li>
+                            <li>• Morphological operations</li>
+                            <li>• Contour-based band detection</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700 mb-2">Results Summary</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Total bands detected: <span class="font-semibold">{{ band_count }}</span></li>
+                            <li>• Lanes detected: <span class="font-semibold">{{ lane_count }}</span></li>
+                            <li>• Bands per lane: <span class="font-semibold">{{ analysis_details.bands_per_lane|floatformat:1 }}</span></li>
+                            <li>• Image quality: <span class="font-semibold">{{ analysis_details.image_quality }}</span></li>
+                            <li>• Detection confidence: <span class="font-semibold">{{ confidence }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center mt-8 space-x-4">
+                <a href="{% url 'disease_prediction' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                    Analyze Another Image
+                </a>
+                <a href="{% url 'home' %}" class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "gel-electro",
+  "version": "1.0.0",
+  "description": "Gel Electrophoresis Band Detection Web Application",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "npx tailwindcss -i ./src/input.css -o ./static/css/tailwind.css --minify"
+  },
+  "keywords": [
+    "django",
+    "opencv",
+    "gel-electrophoresis",
+    "dna-analysis"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}
