@@ -1,62 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease Prediction - Gel Analysis Platform</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-</head>
-<body class="bg-gray-100 min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
-                </div>
-                <!-- Navigation with consistent spacing -->
-                <div class="flex items-center space-x-10">
-                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="{% url 'disease_prediction' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">Disease Prediction</a>
-                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forensics Analysis</a>
-                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
-                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
-                </div>
+{% extends 'base.html' %}
+
+{% block title %}Disease Prediction - Gel Analysis Platform{% endblock %}
+
+{% block content %}
+        <!-- Header -->
+    <div class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-16">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Disease Prediction</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto">Upload a DNA gel image to detect genetic disease markers and get detailed analysis</p>
             </div>
         </div>
-    </nav>
 
-    <div class="container mx-auto px-4 py-8">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Disease Prediction</h1>
-            <p class="text-lg text-gray-600">Upload a DNA gel image to detect genetic disease markers</p>
-        </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         <!-- Main Content -->
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-lg shadow-lg p-8">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover">
                 <div class="text-center mb-8">
-                    <div class="text-4xl mb-4">🧬</div>
-                    <h2 class="text-2xl font-bold text-blue-600 mb-4">Genetic Disease Analysis</h2>
-                    <p class="text-gray-600">Our advanced algorithms can detect patterns associated with various genetic diseases</p>
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-6">
+                        <span class="text-2xl">🧬</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Genetic Disease Analysis</h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-lg">Our advanced algorithms can detect patterns associated with various genetic diseases</p>
                 </div>
                 
                 <!-- Upload Form -->
-                <form method="post" action="{% url 'disease_prediction' %}" enctype="multipart/form-data" class="space-y-6">
+                <form method="post" action="{% url 'disease_prediction' %}" enctype="multipart/form-data" class="space-y-8">
                     {% csrf_token %}
                     
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                        <label for="{{ disease_form.gel_image.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-2">
+                    <div class="bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 p-6 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500 transition-colors duration-300">
+                        <label for="{{ disease_form.gel_image.id_for_label }}" class="block text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4 text-center">
                             {{ disease_form.gel_image.label }}
                         </label>
+                        <div class="text-center">
                         {{ disease_form.gel_image }}
+                        </div>
                         {% if disease_form.gel_image.help_text %}
-                            <p class="mt-1 text-sm text-gray-500">{{ disease_form.gel_image.help_text }}</p>
+                            <p class="mt-3 text-sm text-gray-500 dark:text-gray-400 text-center">{{ disease_form.gel_image.help_text }}</p>
                         {% endif %}
                         {% if disease_form.gel_image.errors %}
-                            <div class="mt-1 text-sm text-red-600">
+                            <div class="mt-3 text-sm text-red-600 text-center">
                                 {% for error in disease_form.gel_image.errors %}
                                     <p>{{ error }}</p>
                                 {% endfor %}
@@ -64,59 +48,99 @@
                         {% endif %}
                     </div>
                     
-                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+                    <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <span class="flex items-center justify-center">
+                            <span class="mr-2">🧬</span>
                         Analyze for Disease
+                            <span class="ml-2">→</span>
+                        </span>
                     </button>
                 </form>
 
                 <!-- Placeholder for Results -->
                 {% if results %}
-                <div class="mt-8 p-6 bg-green-50 rounded-lg border border-green-200">
-                    <h3 class="text-lg font-semibold text-green-800 mb-4">Analysis Results</h3>
-                    <p class="text-gray-700">{{ results }}</p>
+                <div class="mt-8 p-8 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200 dark:border-green-700">
+                    <div class="flex items-center mb-4">
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-white text-sm">✓</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-green-800 dark:text-green-300">Analysis Results</h3>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed">{{ results }}</p>
                 </div>
                 {% endif %}
 
                 <!-- Supported Diseases -->
-                <div class="mt-8 p-6 bg-blue-50 rounded-lg">
-                    <h3 class="text-lg font-semibold text-blue-800 mb-4">Supported Diseases</h3>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <ul class="text-sm text-blue-700 space-y-2">
-                            <li>• Sickle Cell Anemia</li>
-                            <li>• Cystic Fibrosis</li>
-                            <li>• Huntington Disease</li>
+                <div class="mt-8 p-8 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-xl border border-blue-200 dark:border-blue-700">
+                    <div class="flex items-center mb-6">
+                        <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-white text-sm">ℹ</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-blue-800 dark:text-blue-300">Supported Diseases</h3>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Sickle Cell Anemia
+                            </li>
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Cystic Fibrosis
+                            </li>
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Huntington Disease
+                            </li>
                         </ul>
-                        <ul class="text-sm text-blue-700 space-y-2">
-                            <li>• Muscular Dystrophy</li>
-                            <li>• Thalassemia</li>
-                            <li>• Tay-Sachs Disease</li>
+                        <ul class="space-y-3">
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Muscular Dystrophy
+                            </li>
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Thalassemia
+                            </li>
+                            <li class="flex items-center text-blue-700 dark:text-blue-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Tay-Sachs Disease
+                            </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- How It Works -->
-                <div class="mt-8">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">How It Works</h3>
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <div class="text-center">
-                            <div class="text-2xl mb-2">📤</div>
-                            <h4 class="font-semibold text-gray-800 mb-2">1. Upload Image</h4>
-                            <p class="text-sm text-gray-600">Upload your gel electrophoresis image</p>
+                <div class="mt-8 p-8 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-700 dark:to-gray-600 rounded-xl">
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">How It Works</h3>
+                        <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full"></div>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-2xl">📤</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">1. Upload Image</h4>
+                            <p class="text-gray-600 dark:text-gray-300">Upload your gel electrophoresis image</p>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl mb-2">🔬</div>
-                            <h4 class="font-semibold text-gray-800 mb-2">2. AI Analysis</h4>
-                            <p class="text-sm text-gray-600">Advanced algorithms analyze band patterns</p>
+                        <div class="text-center group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-2xl">🔬</span>
+                            </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">2. AI Analysis</h4>
+                            <p class="text-gray-600 dark:text-gray-300">Advanced algorithms analyze band patterns</p>
                         </div>
-                        <div class="text-center">
-                            <div class="text-2xl mb-2">📊</div>
-                            <h4 class="font-semibold text-gray-800 mb-2">3. Get Results</h4>
-                            <p class="text-sm text-gray-600">Receive detailed disease analysis and recommendations</p>
+                        <div class="text-center group">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-2xl">📊</span>
+                        </div>
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">3. Get Results</h4>
+                            <p class="text-gray-600 dark:text-gray-300">Receive detailed disease analysis and recommendations</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

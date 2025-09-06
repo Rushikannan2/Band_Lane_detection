@@ -1,66 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs - Gel Analysis Platform</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-</head>
-<body class="bg-gray-100 min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
-                </div>
-                <div class="flex items-center space-x-8">
-                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
-                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forecast Analysis</a>
-                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
-                    <a href="{% url 'faqs' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">FAQs</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends 'base.html' %}
 
-    <div class="max-w-4xl mx-auto px-4 py-16">
-        <!-- Header -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h1>
-            <p class="text-lg text-gray-600">Find answers to common questions about the Gel Electrophoresis Analysis Platform</p>
+{% block title %}FAQs - Gel Analysis Platform{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-16">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">Frequently Asked Questions</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto">Find answers to common questions about the Gel Electrophoresis Analysis Platform</p>
         </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         <!-- FAQ Sections -->
-        <div class="space-y-8">
+        <div class="space-y-12">
             <!-- General Questions -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">General Questions</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4 animate-bounce-gentle">❓</span>
+                    General Questions
+                </h2>
                 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What is gel electrophoresis?</h3>
-                        <p class="text-gray-600">
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-xl border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-spin">🧬</span>
+                            What is gel electrophoresis?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             Gel electrophoresis is a laboratory technique used to separate DNA, RNA, or protein molecules 
                             based on their size and electrical charge. The molecules are placed in a gel matrix and an 
                             electric current is applied, causing them to migrate through the gel at different rates.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How does this platform work?</h3>
-                        <p class="text-gray-600">
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-xl border-l-4 border-green-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-pulse">⚙️</span>
+                            How does this platform work?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             Our platform uses advanced computer vision algorithms to automatically detect and analyze 
                             DNA bands in gel electrophoresis images. It combines OpenCV image processing with machine 
                             learning pattern recognition to provide accurate disease predictions and forensic analysis.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What file formats are supported?</h3>
-                        <p class="text-gray-600">
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl border-l-4 border-purple-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-bounce">📁</span>
+                            What file formats are supported?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             The platform supports common image formats including PNG, JPG, JPEG, and TIFF. 
                             For best results, we recommend using high-quality PNG images with good contrast.
                         </p>
@@ -69,32 +62,49 @@
             </div>
 
             <!-- Disease Prediction Questions -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Disease Prediction</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4 animate-bounce-gentle">🏥</span>
+                    Disease Prediction
+                </h2>
                 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What diseases can the platform detect?</h3>
-                        <p class="text-gray-600">
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 p-6 rounded-xl border-l-4 border-red-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-pulse">🔬</span>
+                            What diseases can the platform detect?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             The platform can detect patterns associated with several genetic diseases including:
-                            Sickle Cell Anemia, Cystic Fibrosis, Huntington Disease, Muscular Dystrophy, 
-                            Thalassemia, and Tay-Sachs Disease. It also identifies normal patterns.
+                            <span class="font-semibold text-red-600 dark:text-red-400">Sickle Cell Anemia</span>, 
+                            <span class="font-semibold text-red-600 dark:text-red-400">Cystic Fibrosis</span>, 
+                            <span class="font-semibold text-red-600 dark:text-red-400">Huntington Disease</span>, 
+                            <span class="font-semibold text-red-600 dark:text-red-400">Muscular Dystrophy</span>, 
+                            <span class="font-semibold text-red-600 dark:text-red-400">Thalassemia</span>, and 
+                            <span class="font-semibold text-red-600 dark:text-red-400">Tay-Sachs Disease</span>. 
+                            It also identifies normal patterns.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How accurate are the disease predictions?</h3>
-                        <p class="text-gray-600">
-                            The platform achieves 85-95% accuracy on clear, high-quality gel images. Accuracy may vary 
-                            depending on image quality, band clarity, and the specific disease pattern. Results should 
-                            always be confirmed by medical professionals.
+                    <div class="bg-gradient-to-r from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20 p-6 rounded-xl border-l-4 border-yellow-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-yellow-600 dark:group-hover:text-yellow-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-bounce">📊</span>
+                            How accurate are the disease predictions?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            The platform achieves <span class="font-bold text-yellow-600 dark:text-yellow-400">85-95% accuracy</span> on clear, high-quality gel images. 
+                            Accuracy may vary depending on image quality, band clarity, and the specific disease pattern. 
+                            Results should always be confirmed by medical professionals.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I use this for medical diagnosis?</h3>
-                        <p class="text-gray-600">
-                            <strong>No.</strong> This platform is for research and educational purposes only. 
+                    <div class="bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20 p-6 rounded-xl border-l-4 border-orange-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-spin">⚠️</span>
+                            Can I use this for medical diagnosis?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            <strong class="text-red-600 dark:text-red-400">No.</strong> This platform is for research and educational purposes only. 
                             It should not be used for medical diagnosis or treatment decisions. Always consult 
                             qualified medical professionals for any health-related concerns.
                         </p>
@@ -103,32 +113,44 @@
             </div>
 
             <!-- Forecast Analysis Questions -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Forecast Analysis</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4 animate-bounce-gentle">🔍</span>
+                    Forensic Analysis
+                </h2>
                 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What is the match score?</h3>
-                        <p class="text-gray-600">
-                            The match score is a percentage (0-100%) that indicates the similarity between two DNA samples. 
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20 p-6 rounded-xl border-l-4 border-indigo-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-pulse">📈</span>
+                            What is the match score?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            The match score is a <span class="font-bold text-indigo-600 dark:text-indigo-400">percentage (0-100%)</span> that indicates the similarity between two DNA samples. 
                             It's calculated based on band count similarity, band position alignment, and pattern matching. 
                             Higher scores indicate greater similarity.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How reliable is the forensic analysis?</h3>
-                        <p class="text-gray-600">
+                    <div class="bg-gradient-to-r from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 p-6 rounded-xl border-l-4 border-teal-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-bounce">⚖️</span>
+                            How reliable is the forensic analysis?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                             The forensic analysis provides statistical confidence levels and similarity scores. 
-                            However, it should be used as a preliminary screening tool and not as definitive evidence. 
+                            However, it should be used as a <span class="font-semibold text-teal-600 dark:text-teal-400">preliminary screening tool</span> and not as definitive evidence. 
                             Professional forensic analysis should be conducted for legal purposes.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I use this for paternity testing?</h3>
-                        <p class="text-gray-600">
-                            While the platform can compare DNA patterns, it's not suitable for legal paternity testing. 
+                    <div class="bg-gradient-to-r from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 p-6 rounded-xl border-l-4 border-violet-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-spin">👨‍👩‍👧‍👦</span>
+                            Can I use this for paternity testing?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            While the platform can compare DNA patterns, it's <span class="font-semibold text-violet-600 dark:text-violet-400">not suitable for legal paternity testing</span>. 
                             For official paternity testing, use certified laboratories that follow legal standards 
                             and provide court-admissible results.
                         </p>
@@ -137,31 +159,43 @@
             </div>
 
             <!-- Technical Questions -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Technical Questions</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4 animate-bounce-gentle">⚙️</span>
+                    Technical Questions
+                </h2>
                 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What if my image has poor quality?</h3>
-                        <p class="text-gray-600">
-                            The platform works best with clear, high-contrast images. If your image has poor quality, 
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-slate-50 to-gray-50 dark:from-slate-900/20 dark:to-gray-900/20 p-6 rounded-xl border-l-4 border-slate-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-pulse">📸</span>
+                            What if my image has poor quality?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            The platform works best with <span class="font-semibold text-slate-600 dark:text-slate-400">clear, high-contrast images</span>. If your image has poor quality, 
                             the analysis may be less accurate. Try to use images with good lighting, clear bands, 
                             and minimal background noise for best results.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">How long does analysis take?</h3>
-                        <p class="text-gray-600">
-                            Most analyses complete in under 1 second. The processing time depends on image size and 
+                    <div class="bg-gradient-to-r from-emerald-50 to-green-50 dark:from-emerald-900/20 dark:to-green-900/20 p-6 rounded-xl border-l-4 border-emerald-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-bounce">⚡</span>
+                            How long does analysis take?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Most analyses complete in <span class="font-bold text-emerald-600 dark:text-emerald-400">under 1 second</span>. The processing time depends on image size and 
                             complexity, but our optimized algorithms ensure fast results for typical gel images.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Is my data secure?</h3>
-                        <p class="text-gray-600">
-                            Yes, all uploaded images are processed locally and are not stored permanently on our servers. 
+                    <div class="bg-gradient-to-r from-rose-50 to-pink-50 dark:from-rose-900/20 dark:to-pink-900/20 p-6 rounded-xl border-l-4 border-rose-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-spin">🔒</span>
+                            Is my data secure?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes, all uploaded images are <span class="font-semibold text-rose-600 dark:text-rose-400">processed locally</span> and are not stored permanently on our servers. 
                             Images are temporarily processed and then deleted. We prioritize user privacy and data security.
                         </p>
                     </div>
@@ -169,32 +203,46 @@
             </div>
 
             <!-- Troubleshooting -->
-            <div class="bg-white rounded-lg shadow-lg p-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Troubleshooting</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover animate-fade-in">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4 animate-bounce-gentle">🔧</span>
+                    Troubleshooting
+                </h2>
                 
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">What if no bands are detected?</h3>
-                        <p class="text-gray-600">
-                            If no bands are detected, try: 1) Using a higher quality image, 2) Ensuring the image has 
-                            good contrast, 3) Checking that the bands are clearly visible, 4) Using a different image 
-                            format if possible.
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-900/20 dark:to-yellow-900/20 p-6 rounded-xl border-l-4 border-amber-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-pulse">🔍</span>
+                            What if no bands are detected?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            If no bands are detected, try: <span class="font-semibold text-amber-600 dark:text-amber-400">1) Using a higher quality image</span>, 
+                            <span class="font-semibold text-amber-600 dark:text-amber-400">2) Ensuring the image has good contrast</span>, 
+                            <span class="font-semibold text-amber-600 dark:text-amber-400">3) Checking that the bands are clearly visible</span>, 
+                            <span class="font-semibold text-amber-600 dark:text-amber-400">4) Using a different image format if possible</span>.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">The analysis seems incorrect. What should I do?</h3>
-                        <p class="text-gray-600">
-                            If the analysis results seem incorrect, try: 1) Uploading a clearer image, 2) Ensuring 
-                            the image is properly oriented, 3) Checking that the gel has visible bands, 4) Contacting 
-                            support if the issue persists.
+                    <div class="bg-gradient-to-r from-sky-50 to-blue-50 dark:from-sky-900/20 dark:to-blue-900/20 p-6 rounded-xl border-l-4 border-sky-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-bounce">❓</span>
+                            The analysis seems incorrect. What should I do?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            If the analysis results seem incorrect, try: <span class="font-semibold text-sky-600 dark:text-sky-400">1) Uploading a clearer image</span>, 
+                            <span class="font-semibold text-sky-600 dark:text-sky-400">2) Ensuring the image is properly oriented</span>, 
+                            <span class="font-semibold text-sky-600 dark:text-sky-400">3) Checking that the gel has visible bands</span>, 
+                            <span class="font-semibold text-sky-600 dark:text-sky-400">4) Contacting support if the issue persists</span>.
                         </p>
                     </div>
                     
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 mb-2">Can I get help with using the platform?</h3>
-                        <p class="text-gray-600">
-                            Yes! If you need assistance, please contact us through the About Author page. We're happy 
+                    <div class="bg-gradient-to-r from-lime-50 to-green-50 dark:from-lime-900/20 dark:to-green-900/20 p-6 rounded-xl border-l-4 border-lime-500 hover:shadow-lg transition-all duration-300 group">
+                        <h3 class="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center group-hover:text-lime-600 dark:group-hover:text-lime-400 transition-colors">
+                            <span class="text-2xl mr-3 group-hover:animate-spin">💬</span>
+                            Can I get help with using the platform?
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
+                            Yes! If you need assistance, please contact us through the <span class="font-semibold text-lime-600 dark:text-lime-400">About Author page</span>. We're happy 
                             to help with technical issues, usage questions, or feature requests.
                         </p>
                     </div>
@@ -203,15 +251,19 @@
         </div>
 
         <!-- Contact Section -->
-        <div class="mt-16 bg-blue-50 rounded-lg p-8 text-center">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4">Still Have Questions?</h2>
-            <p class="text-gray-600 mb-6">
+        <div class="mt-20 bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-8 md:p-12 text-center card-hover animate-fade-in">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center">
+                <span class="text-3xl mr-4 animate-bounce-gentle">💬</span>
+                Still Have Questions?
+            </h2>
+            <p class="text-gray-600 dark:text-gray-300 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
                 If you can't find the answer you're looking for, feel free to reach out to us.
             </p>
-            <a href="{% url 'about_author' %}" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+            <a href="{% url 'about_author' %}" class="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold text-lg rounded-full transition-all duration-300 transform hover:scale-110 shadow-xl hover:shadow-2xl">
+                <span class="text-2xl mr-3 group-hover:animate-spin">👨‍💻</span>
                 Contact VT Rushi Kannan
+                <span class="ml-3 text-xl group-hover:translate-x-1 transition-transform">→</span>
             </a>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

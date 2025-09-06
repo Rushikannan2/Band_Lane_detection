@@ -6,6 +6,15 @@
     <title>Explore - Gel Electrophoresis Analysis</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <style>
+        /* Fallback CSS for navigation spacing */
+        nav .flex.items-center.space-x-10 > a {
+            margin-right: 2.5rem; /* 40px equivalent to space-x-10 */
+        }
+        nav .flex.items-center.space-x-10 > a:last-child {
+            margin-right: 0;
+        }
+    </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
     <!-- Navigation -->
@@ -15,7 +24,7 @@
                 <div class="flex items-center">
                     <a href="{% url 'home' %}" class="text-xl font-bold text-gray-800">Gel Analysis Platform</a>
                 </div>
-                <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-10">
                     <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
                     <a href="{% url 'explore' %}" class="text-blue-600 hover:text-blue-900 px-3 py-2 rounded-md text-sm font-medium">Explore</a>
                     <a href="{% url 'about' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About</a>

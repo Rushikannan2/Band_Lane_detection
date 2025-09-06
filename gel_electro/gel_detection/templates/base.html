@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gel Electrophoresis Analysis Platform{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for enhanced styling */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .dark .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+        }
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass-effect {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .dark .card-hover:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+        /* Fallback CSS for navigation spacing */
+        nav .flex.items-center.space-x-10 > a {
+            margin-right: 2.5rem; /* 40px equivalent to space-x-10 */
+        }
+        nav .flex.items-center.space-x-10 > a:last-child {
+            margin-right: 0;
+        }
+        
+        /* Light mode - Enhanced contrast for white backgrounds */
+        body {
+            background-color: #f8fafc !important;
+            color: #1f2937 !important;
+        }
+        
+        /* Ensure all text is visible in light mode */
+        h1, h2, h3, h4, h5, h6 {
+            color: #111827 !important;
+        }
+        
+        p {
+            color: #374151 !important;
+        }
+        
+        span {
+            color: #374151 !important;
+        }
+        
+        div {
+            color: #374151 !important;
+        }
+        
+        li {
+            color: #374151 !important;
+        }
+        
+        a {
+            color: #2563eb !important;
+        }
+        
+        a:hover {
+            color: #1d4ed8 !important;
+        }
+        
+        /* Light mode text colors */
+        .text-gray-100 {
+            color: #f3f4f6 !important;
+        }
+        
+        .text-gray-200 {
+            color: #e5e7eb !important;
+        }
+        
+        .text-gray-300 {
+            color: #d1d5db !important;
+        }
+        
+        .text-gray-400 {
+            color: #9ca3af !important;
+        }
+        
+        .text-gray-500 {
+            color: #6b7280 !important;
+        }
+        
+        .text-gray-600 {
+            color: #4b5563 !important;
+        }
+        
+        .text-gray-700 {
+            color: #374151 !important;
+        }
+        
+        .text-gray-800 {
+            color: #1f2937 !important;
+        }
+        
+        .text-gray-900 {
+            color: #111827 !important;
+        }
+        
+        /* Dark mode implementation */
+        .dark {
+            color-scheme: dark;
+            background-color: #111827 !important;
+        }
+        
+        .dark body {
+            background-color: #111827 !important;
+            color: #f9fafb !important;
+        }
+        
+        .dark nav {
+            background-color: rgba(31, 41, 55, 0.8) !important;
+            border-color: #374151 !important;
+        }
+        
+        .dark .bg-white {
+            background-color: #1f2937 !important;
+        }
+        
+        .dark .bg-gray-50 {
+            background-color: #111827 !important;
+        }
+        
+        .dark .bg-gray-100 {
+            background-color: #111827 !important;
+        }
+        
+        .dark .bg-gray-200 {
+            background-color: #374151 !important;
+        }
+        
+        .dark .bg-gray-300 {
+            background-color: #4b5563 !important;
+        }
+        
+        .dark .bg-gray-400 {
+            background-color: #6b7280 !important;
+        }
+        
+        .dark .bg-gray-500 {
+            background-color: #9ca3af !important;
+        }
+        
+        .dark .bg-gray-600 {
+            background-color: #d1d5db !important;
+        }
+        
+        .dark .bg-gray-700 {
+            background-color: #e5e7eb !important;
+        }
+        
+        .dark .bg-gray-800 {
+            background-color: #f3f4f6 !important;
+        }
+        
+        .dark .bg-gray-900 {
+            background-color: #ffffff !important;
+        }
+        
+        /* Text colors for dark mode */
+        .dark .text-gray-100 {
+            color: #111827 !important;
+        }
+        
+        .dark .text-gray-200 {
+            color: #1f2937 !important;
+        }
+        
+        .dark .text-gray-300 {
+            color: #374151 !important;
+        }
+        
+        .dark .text-gray-400 {
+            color: #4b5563 !important;
+        }
+        
+        .dark .text-gray-500 {
+            color: #6b7280 !important;
+        }
+        
+        .dark .text-gray-600 {
+            color: #9ca3af !important;
+        }
+        
+        .dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+        
+        .dark .text-gray-800 {
+            color: #e5e7eb !important;
+        }
+        
+        .dark .text-gray-900 {
+            color: #f9fafb !important;
+        }
+        
+        /* Ensure all text is visible in dark mode */
+        .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+            color: #f9fafb !important;
+        }
+        
+        .dark p {
+            color: #e5e7eb !important;
+        }
+        
+        .dark span {
+            color: #e5e7eb !important;
+        }
+        
+        .dark div {
+            color: #e5e7eb !important;
+        }
+        
+        .dark li {
+            color: #e5e7eb !important;
+        }
+        
+        .dark a {
+            color: #60a5fa !important;
+        }
+        
+        .dark a:hover {
+            color: #93c5fd !important;
+        }
+        
+        /* Theme toggle button styling */
+        #theme-toggle-btn {
+            border: 2px solid transparent;
+        }
+        
+        #theme-toggle-btn:hover {
+            border-color: #3b82f6;
+        }
+        
+        .dark #theme-toggle-btn:hover {
+            border-color: #60a5fa;
+        }
+        
+        /* Additional animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #374151;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #6b7280;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af;
+        }
+        
+        /* Additional contrast improvements */
+        .bg-white {
+            background-color: #ffffff !important;
+            color: #111827 !important;
+        }
+        
+        .bg-gray-50 {
+            background-color: #f8fafc !important;
+            color: #111827 !important;
+        }
+        
+        .bg-gray-100 {
+            background-color: #f1f5f9 !important;
+            color: #111827 !important;
+        }
+        
+        /* Ensure cards have good contrast */
+        .card-hover {
+            background-color: #ffffff !important;
+            color: #111827 !important;
+            border: 1px solid #e2e8f0 !important;
+        }
+        
+        .dark .card-hover {
+            background-color: #1f2937 !important;
+            color: #f9fafb !important;
+            border: 1px solid #374151 !important;
+        }
+        
+        /* Navigation text contrast */
+        nav a {
+            color: #374151 !important;
+            font-weight: 500 !important;
+        }
+        
+        nav a:hover {
+            color: #1d4ed8 !important;
+        }
+        
+        .dark nav a {
+            color: #d1d5db !important;
+        }
+        
+        .dark nav a:hover {
+            color: #60a5fa !important;
+        }
+        
+        /* Button contrast */
+        button {
+            color: #374151 !important;
+        }
+        
+        .dark button {
+            color: #f9fafb !important;
+        }
+        
+        /* Force maximum contrast for result cards */
+        .text-green-900 {
+            color: #14532d !important;
+        }
+        
+        .dark .text-green-100 {
+            color: #dcfce7 !important;
+        }
+        
+        .text-red-900 {
+            color: #7f1d1d !important;
+        }
+        
+        .dark .text-red-100 {
+            color: #fecaca !important;
+        }
+        
+        .text-yellow-900 {
+            color: #713f12 !important;
+        }
+        
+        .dark .text-yellow-100 {
+            color: #fef3c7 !important;
+        }
+        
+        /* Force black text on colored backgrounds for maximum contrast */
+        .text-black {
+            color: #000000 !important;
+        }
+        
+        .dark .text-black {
+            color: #000000 !important;
+        }
+        
+        /* Ensure black text is visible on all colored backgrounds */
+        .bg-green-100 .text-black,
+        .bg-yellow-100 .text-black,
+        .bg-red-100 .text-black {
+            color: #000000 !important;
+        }
+        
+        .dark .bg-green-900\/30 .text-black,
+        .dark .bg-yellow-900\/20 .text-black,
+        .dark .bg-red-900\/30 .text-black {
+            color: #000000 !important;
+        }
+        
+        /* Ensure collaboration text is always visible */
+        .text-gray-800 {
+            color: #1f2937 !important;
+        }
+        
+        .dark .text-gray-100 {
+            color: #f3f4f6 !important;
+        }
+        
+        .text-gray-100 {
+            color: #f3f4f6 !important;
+        }
+        
+        /* Ensure button text has maximum contrast */
+        .bg-blue-600 .text-white,
+        .bg-green-600 .text-white,
+        .bg-blue-700 .text-white,
+        .bg-green-700 .text-white,
+        .bg-blue-800 .text-white,
+        .bg-green-800 .text-white,
+        .bg-blue-900 .text-white,
+        .bg-green-900 .text-white {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 800 !important;
+        }
+        
+        .dark .bg-blue-600 .text-white,
+        .dark .bg-green-600 .text-white,
+        .dark .bg-blue-700 .text-white,
+        .dark .bg-green-700 .text-white,
+        .dark .bg-blue-800 .text-white,
+        .dark .bg-green-800 .text-white,
+        .dark .bg-blue-900 .text-white,
+        .dark .bg-green-900 .text-white {
+            color: #ffffff !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+            font-weight: 800 !important;
+        }
+        
+        /* Force button backgrounds to be more prominent */
+        .bg-blue-800 {
+            background-color: #1e40af !important;
+        }
+        
+        .bg-green-800 {
+            background-color: #166534 !important;
+        }
+        
+        .bg-blue-900 {
+            background-color: #1e3a8a !important;
+        }
+        
+        .bg-green-900 {
+            background-color: #14532d !important;
+        }
+        
+        .dark .bg-blue-600 {
+            background-color: #2563eb !important;
+        }
+        
+        .dark .bg-green-600 {
+            background-color: #16a34a !important;
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-slate-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navigation Bar -->
+    <nav class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="{% url 'home' %}" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        🧬 Gel Analysis Platform
+                    </a>
+                </div>
+                <div class="flex items-center space-x-10">
+                    <a href="{% url 'home' %}" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {% if request.resolver_match.url_name == 'home' %}active text-blue-600 dark:text-blue-400{% endif %}">Home</a>
+                    <a href="{% url 'disease_prediction' %}" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {% if request.resolver_match.url_name == 'disease_prediction' %}active text-blue-600 dark:text-blue-400{% endif %}">Disease Prediction</a>
+                    <a href="{% url 'forensics_analysis' %}" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {% if request.resolver_match.url_name == 'forensics_analysis' %}active text-blue-600 dark:text-blue-400{% endif %}">Forensics Analysis</a>
+                    <a href="{% url 'about_author' %}" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {% if request.resolver_match.url_name == 'about_author' %}active text-blue-600 dark:text-blue-400{% endif %}">About Author</a>
+                    <a href="{% url 'faqs' %}" class="nav-link text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 {% if request.resolver_match.url_name == 'faqs' %}active text-blue-600 dark:text-blue-400{% endif %}">FAQs</a>
+                    
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle-btn" class="ml-4 p-3 rounded-xl bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <span id="mode-icon" class="text-xl">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <p class="text-gray-600 dark:text-gray-400">
+                    © 2024 Gel Electrophoresis Analysis Platform. Built with ❤️ by VT Rushi Kannan
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Theme Toggle Script -->
+    <script src="{% static 'js/theme-toggle.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

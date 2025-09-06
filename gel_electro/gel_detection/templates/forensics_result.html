@@ -1,51 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forensics Analysis Results</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-</head>
-<body class="bg-gray-100 min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
-                </div>
-                <div class="flex items-center space-x-10">
-                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
-                    <a href="{% url 'forensics_analysis' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">Forensics Analysis</a>
-                    <a href="{% url 'about_author' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">About Author</a>
-                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends 'base.html' %}
+
+{% block title %}Forensics Analysis Results{% endblock %}
+
+{% block content %}
 
     <div class="container mx-auto px-4 py-8">
         <!-- Header -->
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">Forensics Analysis Results</h1>
-            <a href="{% url 'forensics_analysis' %}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Forensics Analysis Results</h1>
+            <a href="{% url 'forensics_analysis' %}" class="inline-block bg-green-800 hover:bg-green-900 dark:bg-green-600 dark:hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200 shadow-xl hover:shadow-2xl border-2 border-green-900 dark:border-green-500">
                 ← Back to Forensics Analysis
             </a>
         </div>
 
         <!-- Match Score Card -->
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 mb-8">
+        <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
             <div class="text-center">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">DNA Match Analysis</h2>
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">DNA Match Analysis</h2>
                 
                 <!-- Match Score Display -->
-                <div class="inline-block p-8 rounded-lg {% if match_score >= 70 %}bg-green-100 border-2 border-green-300{% elif match_score >= 40 %}bg-yellow-100 border-2 border-yellow-300{% else %}bg-red-100 border-2 border-red-300{% endif %}">
-                    <div class="text-6xl font-bold {% if match_score >= 70 %}text-green-800{% elif match_score >= 40 %}text-yellow-800{% else %}text-red-800{% endif %} mb-2">
+                <div class="inline-block p-10 rounded-2xl shadow-2xl {% if match_score >= 70 %}bg-green-100 dark:bg-green-900/30 border-2 border-green-300 dark:border-green-500{% elif match_score >= 40 %}bg-yellow-100 dark:bg-yellow-900/30 border-2 border-yellow-300 dark:border-yellow-500{% else %}bg-red-100 dark:bg-red-900/30 border-2 border-red-300 dark:border-red-500{% endif %}">
+                    <div class="text-7xl font-bold text-black dark:text-black mb-4">
                         {{ match_score|floatformat:1 }}%
                     </div>
-                    <p class="text-xl {% if match_score >= 70 %}text-green-600{% elif match_score >= 40 %}text-yellow-600{% else %}text-red-600{% endif %}">
+                    <p class="text-2xl font-semibold text-black dark:text-black">
                         Match Score
                     </p>
                 </div>
@@ -53,119 +31,119 @@
                 <!-- Interpretation -->
                 <div class="mt-6">
                     {% if match_score >= 70 %}
-                        <p class="text-lg text-green-700 font-semibold">High Probability Match</p>
-                        <p class="text-gray-600">The DNA samples show strong similarity</p>
+                        <p class="text-lg text-green-700 dark:text-green-300 font-semibold">High Probability Match</p>
+                        <p class="text-gray-600 dark:text-gray-400">The DNA samples show strong similarity</p>
                     {% elif match_score >= 40 %}
-                        <p class="text-lg text-yellow-700 font-semibold">Moderate Similarity</p>
-                        <p class="text-gray-600">The DNA samples show some similarity but require further analysis</p>
+                        <p class="text-lg text-yellow-700 dark:text-yellow-300 font-semibold">Moderate Similarity</p>
+                        <p class="text-gray-600 dark:text-gray-400">The DNA samples show some similarity but require further analysis</p>
                     {% else %}
-                        <p class="text-lg text-red-700 font-semibold">Low Similarity</p>
-                        <p class="text-gray-600">The DNA samples show minimal similarity</p>
+                        <p class="text-lg text-red-700 dark:text-red-300 font-semibold">Low Similarity</p>
+                        <p class="text-gray-600 dark:text-gray-400">The DNA samples show minimal similarity</p>
                     {% endif %}
                 </div>
             </div>
         </div>
 
         <!-- Images Comparison -->
-        <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">Image Analysis Comparison</h3>
+        <div class="max-w-6xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Image Analysis Comparison</h3>
             
             <!-- Crime Scene Images -->
             <div class="mb-8">
-                <h4 class="text-xl font-semibold text-gray-900 mb-4 text-center">Crime Scene DNA Sample</h4>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-center">Crime Scene DNA Sample</h4>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="text-center">
-                        <h5 class="text-lg font-medium text-gray-700 mb-2">Original Image</h5>
-                        <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Original Image</h5>
+                        <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
                             <img src="{{ crime_original }}" alt="Crime Scene Original" class="w-full h-auto">
                         </div>
                     </div>
                     <div class="text-center">
-                        <h5 class="text-lg font-medium text-gray-700 mb-2">Processed with Bands</h5>
-                        <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Processed with Bands</h5>
+                        <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
                             <img src="{{ crime_processed }}" alt="Crime Scene Processed" class="w-full h-auto">
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-sm text-gray-600 mt-2">Bands: {{ crime_bands }} | Lanes: {{ crime_lanes }}</p>
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">Bands: {{ crime_bands }} | Lanes: {{ crime_lanes }}</p>
             </div>
 
             <!-- Suspect Images -->
             <div class="mb-8">
-                <h4 class="text-xl font-semibold text-gray-900 mb-4 text-center">Suspect DNA Sample</h4>
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-center">Suspect DNA Sample</h4>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="text-center">
-                        <h5 class="text-lg font-medium text-gray-700 mb-2">Original Image</h5>
-                        <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Original Image</h5>
+                        <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
                             <img src="{{ suspect_original }}" alt="Suspect Original" class="w-full h-auto">
                         </div>
                     </div>
                     <div class="text-center">
-                        <h5 class="text-lg font-medium text-gray-700 mb-2">Processed with Bands</h5>
-                        <div class="border-2 border-gray-300 rounded-lg overflow-hidden">
+                        <h5 class="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">Processed with Bands</h5>
+                        <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
                             <img src="{{ suspect_processed }}" alt="Suspect Processed" class="w-full h-auto">
                         </div>
                     </div>
                 </div>
-                <p class="text-center text-sm text-gray-600 mt-2">Bands: {{ suspect_bands }} | Lanes: {{ suspect_lanes }}</p>
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">Bands: {{ suspect_bands }} | Lanes: {{ suspect_lanes }}</p>
             </div>
         </div>
 
         <!-- Analysis Details -->
-        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            <h3 class="text-xl font-semibold text-gray-900 mb-6">Analysis Details</h3>
+        <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Analysis Details</h3>
             
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Match Score Calculation -->
                 <div>
-                    <h4 class="font-semibold text-gray-700 mb-4">Match Score Calculation</h4>
+                    <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Match Score Calculation</h4>
                     <div class="space-y-3">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Crime Scene Bands:</span>
-                            <span class="font-semibold">{{ crime_bands }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Crime Scene Bands:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ crime_bands }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Suspect Bands:</span>
-                            <span class="font-semibold">{{ suspect_bands }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Suspect Bands:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ suspect_bands }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Lane Count Difference:</span>
-                            <span class="font-semibold">{{ comparison_details.lane_count_diff }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Lane Count Difference:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ comparison_details.lane_count_diff }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Band Count Difference:</span>
-                            <span class="font-semibold">{{ comparison_details.band_count_diff }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Band Count Difference:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ comparison_details.band_count_diff }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Lane Similarity:</span>
-                            <span class="font-semibold">{{ comparison_details.lane_similarity|floatformat:2 }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Lane Similarity:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ comparison_details.lane_similarity|floatformat:2 }}</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Band Similarity:</span>
-                            <span class="font-semibold">{{ comparison_details.band_similarity|floatformat:2 }}</span>
+                            <span class="text-gray-600 dark:text-gray-400">Band Similarity:</span>
+                            <span class="font-semibold text-gray-900 dark:text-white">{{ comparison_details.band_similarity|floatformat:2 }}</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Algorithm Details -->
                 <div>
-                    <h4 class="font-semibold text-gray-700 mb-4">Analysis Quality</h4>
+                    <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-4">Analysis Quality</h4>
                     <div class="space-y-2">
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Crime Scene Quality:</span>
-                            <span class="font-semibold {% if analysis_quality.crime_quality == 'Good' %}text-green-600{% else %}text-yellow-600{% endif %}">
+                            <span class="text-gray-600 dark:text-gray-400">Crime Scene Quality:</span>
+                            <span class="font-semibold {% if analysis_quality.crime_quality == 'Good' %}text-green-600 dark:text-green-400{% else %}text-yellow-600 dark:text-yellow-400{% endif %}">
                                 {{ analysis_quality.crime_quality }}
                             </span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-600">Suspect Quality:</span>
-                            <span class="font-semibold {% if analysis_quality.suspect_quality == 'Good' %}text-green-600{% else %}text-yellow-600{% endif %}">
+                            <span class="text-gray-600 dark:text-gray-400">Suspect Quality:</span>
+                            <span class="font-semibold {% if analysis_quality.suspect_quality == 'Good' %}text-green-600 dark:text-green-400{% else %}text-yellow-600 dark:text-yellow-400{% endif %}">
                                 {{ analysis_quality.suspect_quality }}
                             </span>
                         </div>
                     </div>
-                    <h4 class="font-semibold text-gray-700 mb-2 mt-4">Detection Algorithm</h4>
-                    <ul class="text-sm text-gray-600 space-y-1">
+                    <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2 mt-4">Detection Algorithm</h4>
+                    <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
                         <li>• Lane detection via vertical projection</li>
                         <li>• Band detection via horizontal projection</li>
                         <li>• Peak finding with prominence analysis</li>
@@ -176,8 +154,8 @@
             </div>
 
             <!-- Disclaimer -->
-            <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400">
-                <p class="text-sm text-yellow-800">
+            <div class="mt-8 p-4 bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-yellow-400 dark:border-yellow-500">
+                <p class="text-sm text-black dark:text-black font-medium">
                     <strong>Disclaimer:</strong> This analysis is for demonstration purposes only. 
                     Real forensic DNA analysis requires specialized equipment, validated protocols, 
                     and expert interpretation. Results should not be used for legal proceedings 
@@ -187,14 +165,17 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="text-center mt-8 space-x-4">
-            <a href="{% url 'forensics_analysis' %}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+        <div class="text-center mt-8 space-x-6">
+            <a href="{% url 'forensics_analysis' %}" class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <span class="text-2xl mr-3 group-hover:animate-pulse">🔍</span>
                 Analyze Another Pair
+                <span class="ml-3 text-xl group-hover:translate-x-1 transition-transform">→</span>
             </a>
-            <a href="{% url 'home' %}" class="inline-block bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition duration-200">
+            <a href="{% url 'home' %}" class="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 dark:from-gray-500 dark:to-gray-600 dark:hover:from-gray-600 dark:hover:to-gray-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                <span class="text-2xl mr-3 group-hover:animate-bounce">🏠</span>
                 Back to Home
+                <span class="ml-3 text-xl group-hover:translate-x-1 transition-transform">→</span>
             </a>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

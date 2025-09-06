@@ -1,92 +1,124 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Author - VT Rushi Kannan</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-</head>
-<body class="bg-gray-100 min-h-screen">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold text-gray-800">Gel Analysis Platform</h1>
-                </div>
-                <div class="flex items-center space-x-8">
-                    <a href="{% url 'home' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="{% url 'disease_prediction' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Disease Prediction</a>
-                    <a href="{% url 'forensics_analysis' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Forecast Analysis</a>
-                    <a href="{% url 'about_author' %}" class="text-blue-600 hover:text-blue-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-blue-600">About Author</a>
-                    <a href="{% url 'faqs' %}" class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">FAQs</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+{% extends 'base.html' %}
 
-    <div class="max-w-6xl mx-auto px-4 py-16">
-        <!-- Author Header -->
-        <div class="text-center mb-16">
-            <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                <span class="text-4xl font-bold text-white">VT</span>
+{% block title %}About Author - VT Rushi Kannan{% endblock %}
+
+{% block content %}
+    <!-- Author Header -->
+    <div class="relative overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600 py-20">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="w-32 h-32 mx-auto mb-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border-4 border-white/30">
+                <span class="text-5xl font-bold text-white"></span>
+                </div>
+            <h1 class="text-5xl md:text-6xl font-bold text-white mb-6">VT Rushi Kannan</h1>
+            <p class="text-xl text-white/90 mb-4">Computer Vision Engineer & AI Researcher</p>
+            <p class="text-lg text-white/80 font-semibold">Gel Electrophoresis Analysis Platform Developer</p>
             </div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">VT Rushi Kannan</h1>
-            <p class="text-xl text-gray-600 mb-2">Computer Vision Engineer & AI Researcher</p>
-            <p class="text-lg text-blue-600 font-semibold">Gel Electrophoresis Analysis Platform Developer</p>
         </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
 
         <!-- About Section -->
-        <div class="grid md:grid-cols-2 gap-12 mb-16">
-            <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">About the Developer</h2>
-                <p class="text-gray-600 mb-4">
+        <div class="grid md:grid-cols-2 gap-12 mb-20">
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover">
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4">👨‍💻</span>
+                    About the Developer
+                </h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     VT Rushi Kannan is a passionate computer vision engineer and AI researcher specializing in 
                     medical image analysis and bioinformatics applications. With extensive experience in 
                     OpenCV, machine learning, and scientific computing, Rushi has developed this advanced 
                     gel electrophoresis analysis platform to revolutionize DNA analysis workflows.
                 </p>
-                <p class="text-gray-600 mb-4">
+                <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     This project represents a culmination of expertise in computer vision algorithms, 
                     pattern recognition, and medical informatics. The platform combines cutting-edge 
                     OpenCV techniques with sophisticated disease pattern recognition to provide 
                     accurate, fast, and reliable analysis of gel electrophoresis images.
                 </p>
-                <p class="text-gray-600">
+                <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                     Rushi's work focuses on bridging the gap between complex scientific algorithms 
                     and practical, user-friendly applications that can make a real impact in 
                     medical diagnostics and forensic analysis.
                 </p>
             </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">Technical Expertise</h3>
-                <div class="space-y-6">
-                    <div>
-                        <h4 class="font-semibold text-gray-800 mb-3">Computer Vision & Image Processing</h4>
-                        <ul class="text-sm text-gray-600 space-y-1">
-                            <li>• OpenCV for advanced image analysis</li>
-                            <li>• Contour detection and morphological operations</li>
-                            <li>• Pattern recognition and feature extraction</li>
-                            <li>• Real-time image processing optimization</li>
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 card-hover">
+                <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center">
+                    <span class="text-3xl mr-4">⚡</span>
+                    Technical Expertise
+                </h3>
+                <div class="space-y-8">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-xl">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">👁️</span>
+                            Computer Vision & Image Processing
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                OpenCV for advanced image analysis
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Contour detection and morphological operations
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Pattern recognition and feature extraction
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Real-time image processing optimization
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-800 mb-3">Machine Learning & AI</h4>
-                        <ul class="text-sm text-gray-600 space-y-1">
-                            <li>• Disease pattern recognition algorithms</li>
-                            <li>• Confidence scoring and statistical analysis</li>
-                            <li>• Similarity matching and comparison algorithms</li>
-                            <li>• Predictive modeling for medical applications</li>
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🤖</span>
+                            Machine Learning & AI
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Disease pattern recognition algorithms
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Confidence scoring and statistical analysis
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Similarity matching and comparison algorithms
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Predictive modeling for medical applications
+                            </li>
                         </ul>
                     </div>
-                    <div>
-                        <h4 class="font-semibold text-gray-800 mb-3">Web Development & Deployment</h4>
-                        <ul class="text-sm text-gray-600 space-y-1">
-                            <li>• Django web framework for robust applications</li>
-                            <li>• Responsive UI design with Tailwind CSS</li>
-                            <li>• Database design and optimization</li>
-                            <li>• Production deployment and scaling</li>
+                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-xl">
+                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">🌐</span>
+                            Web Development & Deployment
+                        </h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Django web framework for robust applications
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Responsive UI design with Tailwind CSS
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Database design and optimization
+                            </li>
+                            <li class="flex items-center text-gray-600 dark:text-gray-300">
+                                <span class="text-green-500 mr-3">✓</span>
+                                Production deployment and scaling
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -94,77 +126,115 @@
         </div>
 
         <!-- Project Details -->
-        <div class="bg-white rounded-lg shadow-lg p-8 mb-16">
-            <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center">About This Project</h2>
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 mb-20 card-hover">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center flex items-center justify-center">
+                <span class="text-3xl mr-4">🚀</span>
+                About This Project
+            </h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Project Vision</h3>
-                    <p class="text-gray-600 mb-4">
+                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                        <span class="text-2xl mr-3">🎯</span>
+                        Project Vision
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                         To create an accessible, accurate, and fast platform for gel electrophoresis analysis 
                         that can be used by researchers, medical professionals, and forensic experts worldwide.
                     </p>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed">
                         The goal is to democratize advanced DNA analysis capabilities, making sophisticated 
                         computer vision techniques available to anyone who needs to analyze gel electrophoresis images.
                     </p>
                 </div>
-                <div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Key Innovations</h3>
-                    <ul class="text-gray-600 space-y-2">
-                        <li>• Hybrid band detection algorithm combining contour analysis and peak finding</li>
-                        <li>• Advanced disease pattern recognition with confidence scoring</li>
-                        <li>• Real-time forensic analysis with statistical matching</li>
-                        <li>• User-friendly interface with detailed medical recommendations</li>
-                        <li>• Comprehensive error handling and quality assessment</li>
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-6 rounded-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4 flex items-center">
+                        <span class="text-2xl mr-3">💡</span>
+                        Key Innovations
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Hybrid band detection algorithm combining contour analysis and peak finding
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Advanced disease pattern recognition with confidence scoring
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Real-time forensic analysis with statistical matching
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <span class="text-green-500 mr-3">✓</span>
+                            User-friendly interface with detailed medical recommendations
+                        </li>
+                        <li class="flex items-center text-gray-600 dark:text-gray-300">
+                            <span class="text-green-500 mr-3">✓</span>
+                            Comprehensive error handling and quality assessment
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- Technical Achievements -->
-        <div class="grid md:grid-cols-3 gap-8 mb-16">
-            <div class="bg-blue-50 p-6 rounded-lg text-center">
-                <div class="text-3xl mb-4">🎯</div>
-                <h3 class="text-xl font-bold text-blue-800 mb-2">High Accuracy</h3>
-                <p class="text-blue-600">85-95% accuracy in band detection on clear gel images</p>
+        <div class="grid md:grid-cols-3 gap-8 mb-20">
+            <div class="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-8 rounded-2xl text-center card-hover group">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <span class="text-3xl">🎯</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">High Accuracy</h3>
+                <p class="text-gray-600 dark:text-gray-300">85-95% accuracy in band detection on clear gel images</p>
             </div>
-            <div class="bg-green-50 p-6 rounded-lg text-center">
-                <div class="text-3xl mb-4">⚡</div>
-                <h3 class="text-xl font-bold text-green-800 mb-2">Fast Processing</h3>
-                <p class="text-green-600">Sub-second analysis with optimized algorithms</p>
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-8 rounded-2xl text-center card-hover group">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <span class="text-3xl">⚡</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Fast Processing</h3>
+                <p class="text-gray-600 dark:text-gray-300">Sub-second analysis with optimized algorithms</p>
             </div>
-            <div class="bg-purple-50 p-6 rounded-lg text-center">
-                <div class="text-3xl mb-4">🔬</div>
-                <h3 class="text-xl font-bold text-purple-800 mb-2">Medical Grade</h3>
-                <p class="text-purple-600">Professional-level analysis with detailed recommendations</p>
+            <div class="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 p-8 rounded-2xl text-center card-hover group">
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <span class="text-3xl">🔬</span>
+            </div>
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Medical Grade</h3>
+                <p class="text-gray-600 dark:text-gray-300">Professional-level analysis with detailed recommendations</p>
             </div>
         </div>
 
         <!-- Contact & Links -->
-        <div class="bg-gray-900 text-white rounded-lg p-8 text-center">
-            <h2 class="text-2xl font-bold mb-4">Connect with VT Rushi Kannan</h2>
-            <p class="text-gray-300 mb-6">
+        <div class="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 text-white rounded-2xl p-8 md:p-12 text-center card-hover">
+            <h2 class="text-3xl font-bold mb-6 flex items-center justify-center">
+                <span class="text-3xl mr-4">🤝</span>
+                Connect with VT Rushi Kannan
+            </h2>
+            <p class="text-gray-800 dark:text-gray-100 mb-8 text-lg leading-relaxed max-w-3xl mx-auto font-medium">
                 Interested in collaborating or learning more about this project? 
                 Get in touch to discuss computer vision, medical AI, or bioinformatics applications.
             </p>
-            <div class="flex justify-center space-x-8">
-                <div class="text-center">
-                    <div class="text-2xl mb-2">📧</div>
-                    <p class="text-sm text-gray-300">Email</p>
-                    <p class="text-blue-400">rushi.kannan@example.com</p>
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl">📧</span>
+                    </div>
+                    <p class="text-sm text-gray-300 dark:text-gray-400 mb-2">Email</p>
+                    <p class="text-blue-400 dark:text-blue-300 font-semibold">rushi.kannan@example.com</p>
                 </div>
-                <div class="text-center">
-                    <div class="text-2xl mb-2">💼</div>
-                    <p class="text-sm text-gray-300">LinkedIn</p>
-                    <p class="text-blue-400">linkedin.com/in/vtrushikannan</p>
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl">💼</span>
+                    </div>
+                    <p class="text-sm text-gray-300 dark:text-gray-400 mb-2">LinkedIn</p>
+                    <p class="text-blue-400 dark:text-blue-300 font-semibold">linkedin.com/in/vtrushikannan</p>
                 </div>
-                <div class="text-center">
-                    <div class="text-2xl mb-2">🐙</div>
-                    <p class="text-sm text-gray-300">GitHub</p>
-                    <p class="text-blue-400">github.com/vtrushikannan</p>
+                <div class="text-center group">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-2xl">🐙</span>
+                </div>
+                    <p class="text-sm text-gray-300 dark:text-gray-400 mb-2">GitHub</p>
+                    <p class="text-blue-400 dark:text-blue-300 font-semibold">github.com/vtrushikannan</p>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

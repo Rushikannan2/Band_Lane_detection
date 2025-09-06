@@ -63,3 +63,13 @@ test_gel_sample.png
 project_structure.txt
 project_structure2.txt
 TROUBLESHOOTING.md
+
+# =========================
+# Large Models / Datasets
+# =========================
+*.h5
+*.pkl
+*.zip
+data/
+dataset/
+models/
