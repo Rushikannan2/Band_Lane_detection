@@ -284,6 +284,15 @@
             0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
             50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
         }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.6)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.4)) drop-shadow(0 0 30px rgba(147, 51, 234, 0.3));
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.8)) drop-shadow(0 0 30px rgba(59, 130, 246, 0.6)) drop-shadow(0 0 40px rgba(147, 51, 234, 0.5));
+            }
+        }
         
         .animate-float {
             animation: float 6s ease-in-out infinite;
@@ -291,6 +300,10 @@
         
         .animate-glow {
             animation: glow 2s ease-in-out infinite;
+        }
+
+        .animate-title-glow {
+            animation: titleGlow 3s ease-in-out infinite;
         }
         
         /* Smooth scrolling */
