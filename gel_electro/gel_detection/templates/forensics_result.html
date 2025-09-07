@@ -89,6 +89,70 @@
             </div>
         </div>
 
+        <!-- Forensic Visualizations -->
+        {% if forensic_plots %}
+        <div class="max-w-7xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">Forensic Analysis Visualizations</h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Similarity Heatmap -->
+                {% if forensic_plots.heatmap %}
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">DNA Band Similarity Heatmap</h4>
+                    <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                        <img src="{{ forensic_plots.heatmap }}" alt="Similarity Heatmap" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Shows similarity scores between crime scene and suspect DNA lanes</p>
+                </div>
+                {% endif %}
+
+                <!-- Band Pattern Scatter Plot -->
+                {% if forensic_plots.scatter %}
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Band Pattern Comparison</h4>
+                    <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                        <img src="{{ forensic_plots.scatter }}" alt="Band Pattern Scatter" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Scatter plot comparing band positions and intensities</p>
+                </div>
+                {% endif %}
+
+                <!-- Hierarchical Clustering Dendrogram -->
+                {% if forensic_plots.dendrogram %}
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Hierarchical Clustering</h4>
+                    <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                        <img src="{{ forensic_plots.dendrogram }}" alt="Dendrogram" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Shows clustering relationships between DNA lanes</p>
+                </div>
+                {% endif %}
+
+                <!-- Statistical Summary -->
+                {% if forensic_plots.statistics %}
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-4">Statistical Summary</h4>
+                    <div class="border-2 border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                        <img src="{{ forensic_plots.statistics }}" alt="Statistical Summary" class="w-full h-auto">
+                    </div>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">Comprehensive statistical analysis and metrics</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Visualization Description -->
+            <div class="mt-8 p-6 bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-400 dark:border-blue-500">
+                <h5 class="text-lg font-semibold text-blue-800 dark:text-blue-300 mb-3">About These Visualizations</h5>
+                <div class="text-blue-700 dark:text-blue-200 space-y-2">
+                    <p><strong>Heatmap:</strong> Color-coded similarity matrix showing how closely each crime scene lane matches each suspect lane. Red indicates high similarity, blue indicates low similarity.</p>
+                    <p><strong>Scatter Plot:</strong> Visual comparison of band positions and intensities. Red dots represent crime scene bands, blue dots represent suspect bands.</p>
+                    <p><strong>Dendrogram:</strong> Hierarchical clustering showing which lanes are most similar to each other based on DNA patterns.</p>
+                    <p><strong>Statistical Summary:</strong> Comprehensive analysis including band counts, lane counts, match scores, and pattern complexity metrics.</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Analysis Details -->
         <div class="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-6">Analysis Details</h3>

@@ -9,6 +9,7 @@ from .forms import DiseasePredictionForm, ForensicsForm
 from .models import GelImage
 from .gel_analysis import process_gel_image as analyze_gel_image, compare_gel_images
 from .disease_patterns import analyze_disease_patterns, get_disease_recommendations
+from .forensic_visualization import generate_forensic_plots
 
 
 def home(request):
@@ -199,6 +200,17 @@ def forensics_analysis(request):
                 match_score = comparison_results['match_score']
                 comparison_details = comparison_results['comparison_details']
                 
+                # Generate forensic visualizations
+                try:
+                    forensic_plots = generate_forensic_plots(
+                        crime_results['lanes'],
+                        suspect_results['lanes'],
+                        match_score
+                    )
+                except Exception as e:
+                    print(f"Forensic visualization error: {e}")
+                    forensic_plots = {}
+                
                 # Save both images to database (optional)
                 try:
                     crime_gel = GelImage.objects.create(
@@ -228,7 +240,8 @@ def forensics_analysis(request):
                     'analysis_quality': {
                         'crime_quality': 'Good' if crime_results['features']['image']['edge_mean'] > 0.1 else 'Fair',
                         'suspect_quality': 'Good' if suspect_results['features']['image']['edge_mean'] > 0.1 else 'Fair'
-                    }
+                    },
+                    'forensic_plots': forensic_plots
                 }
                 return render(request, 'forensics_result.html', context)
                 
