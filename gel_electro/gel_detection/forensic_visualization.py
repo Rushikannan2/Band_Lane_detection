@@ -40,14 +40,14 @@ class ForensicVisualizer:
         Create a heatmap showing similarity between crime scene and suspect DNA bands.
         
         Args:
-            crime_lanes (list): Crime scene lane data
-            suspect_lanes (list): Suspect lane data
+            crime_lanes (list): Crime scene lane data (each element = 1 crime scene sample)
+            suspect_lanes (list): Suspect lane data (each element = 1 suspect sample)
             save_path (str): Path to save the heatmap
             
         Returns:
             str: Path to saved heatmap or base64 encoded image
         """
-        # Extract band data
+        # Extract band data - each lane represents a separate sample
         crime_bands = self._extract_band_data(crime_lanes)
         suspect_bands = self._extract_band_data(suspect_lanes)
         
@@ -61,9 +61,9 @@ class ForensicVisualizer:
         # Create heatmap with custom colormap
         im = ax.imshow(similarity_matrix, cmap='RdYlBu_r', aspect='auto', vmin=0, vmax=1)
         
-        # Set labels with enhanced styling
-        crime_labels = [f'Crime Lane {i+1}' for i in range(len(crime_lanes))]
-        suspect_labels = [f'Suspect Lane {i+1}' for i in range(len(suspect_lanes))]
+        # Set labels with enhanced styling - each lane = separate sample
+        crime_labels = [f'Crime_Lane_{i+1}' for i in range(len(crime_lanes))]
+        suspect_labels = [f'Suspect_Lane_{i+1}' for i in range(len(suspect_lanes))]
         
         ax.set_xticks(range(len(suspect_labels)))
         ax.set_yticks(range(len(crime_labels)))
@@ -100,10 +100,10 @@ class ForensicVisualizer:
                                      linewidth=1))
         
         # Styling with enhanced visibility
-        ax.set_title('DNA Band Similarity Heatmap\nCrime Scene vs Suspect Samples', 
+        ax.set_title('DNA Band Similarity Heatmap\nCrime Scene vs Suspect Samples\n(Each Lane = Separate Sample)', 
                     fontsize=18, fontweight='bold', pad=25, color='black')
-        ax.set_xlabel('Suspect DNA Lanes', fontsize=14, fontweight='bold', color='black')
-        ax.set_ylabel('Crime Scene DNA Lanes', fontsize=14, fontweight='bold', color='black')
+        ax.set_xlabel('Suspect DNA Lanes (Individual Samples)', fontsize=14, fontweight='bold', color='black')
+        ax.set_ylabel('Crime Scene DNA Lanes (Individual Samples)', fontsize=14, fontweight='bold', color='black')
         
         # Enhance tick labels
         ax.tick_params(axis='both', which='major', labelsize=12, colors='black')
@@ -130,14 +130,14 @@ class ForensicVisualizer:
         Create a scatter plot comparing band patterns between crime scene and suspect.
         
         Args:
-            crime_lanes (list): Crime scene lane data
-            suspect_lanes (list): Suspect lane data
+            crime_lanes (list): Crime scene lane data (each element = 1 crime scene sample)
+            suspect_lanes (list): Suspect lane data (each element = 1 suspect sample)
             save_path (str): Path to save the scatter plot
             
         Returns:
             str: Path to saved plot or base64 encoded image
         """
-        # Extract and prepare data
+        # Extract and prepare data - each lane represents a separate sample
         crime_data = self._prepare_scatter_data(crime_lanes, 'Crime Scene')
         suspect_data = self._prepare_scatter_data(suspect_lanes, 'Suspect')
         
@@ -152,19 +152,19 @@ class ForensicVisualizer:
         crime_mask = all_data['Sample_Type'] == 'Crime Scene'
         suspect_mask = all_data['Sample_Type'] == 'Suspect'
         
-        # Plot crime scene data with clear, distinct markers
+        # Plot crime scene data with clear, distinct markers (red squares)
         crime_scatter = ax.scatter(all_data.loc[crime_mask, 'Lane_Position'], 
                                  all_data.loc[crime_mask, 'Band_Position'],
                                  c='red', s=200, alpha=0.9, 
-                                 label='Crime Scene', 
+                                 label='Crime Scene DNA', 
                                  marker='s',  # Square markers for crime scene
                                  edgecolors='darkred', linewidth=2)
         
-        # Plot suspect data with clear, distinct markers
+        # Plot suspect data with clear, distinct markers (blue circles)
         suspect_scatter = ax.scatter(all_data.loc[suspect_mask, 'Lane_Position'], 
                                    all_data.loc[suspect_mask, 'Band_Position'],
                                    c='blue', s=200, alpha=0.9,
-                                   label='Suspect', 
+                                   label='Suspect DNA', 
                                    marker='o',  # Circle markers for suspect
                                    edgecolors='darkblue', linewidth=2)
         
@@ -186,17 +186,17 @@ class ForensicVisualizer:
         # Add clear legend with marker explanations
         legend_elements = [
             plt.Line2D([0], [0], marker='s', color='w', markerfacecolor='red', 
-                      markersize=12, label='Crime Scene (Squares)', markeredgecolor='darkred', markeredgewidth=2),
+                      markersize=12, label='Crime Scene DNA (Red Squares)', markeredgecolor='darkred', markeredgewidth=2),
             plt.Line2D([0], [0], marker='o', color='w', markerfacecolor='blue', 
-                      markersize=12, label='Suspect (Circles)', markeredgecolor='darkblue', markeredgewidth=2)
+                      markersize=12, label='Suspect DNA (Blue Circles)', markeredgecolor='darkblue', markeredgewidth=2)
         ]
         ax.legend(handles=legend_elements, loc='upper right', fontsize=12, frameon=True, 
                  fancybox=True, shadow=True, framealpha=0.9)
         
         # Styling with enhanced visibility
-        ax.set_xlabel('Lane Position', fontsize=14, fontweight='bold', color='black')
+        ax.set_xlabel('Lane Position (Individual Samples)', fontsize=14, fontweight='bold', color='black')
         ax.set_ylabel('Band Position (Y-coordinate)', fontsize=14, fontweight='bold', color='black')
-        ax.set_title('DNA Band Pattern Comparison\nCrime Scene vs Suspect Samples', 
+        ax.set_title('DNA Band Pattern Comparison\nCrime Scene vs Suspect Samples\n(Each Lane = Separate Sample)', 
                     fontsize=18, fontweight='bold', pad=25, color='black')
         
         # Legend is already added above with custom elements
@@ -232,23 +232,25 @@ class ForensicVisualizer:
         Create a dendrogram showing hierarchical clustering of DNA patterns.
         
         Args:
-            crime_lanes (list): Crime scene lane data
-            suspect_lanes (list): Suspect lane data
+            crime_lanes (list): Crime scene lane data (each element = 1 crime scene sample)
+            suspect_lanes (list): Suspect lane data (each element = 1 suspect sample)
             save_path (str): Path to save the dendrogram
             
         Returns:
             str: Path to saved dendrogram or base64 encoded image
         """
-        # Prepare data for clustering
+        # Prepare data for clustering - each lane represents a separate sample
         all_lanes = crime_lanes + suspect_lanes
         lane_features = []
         lane_labels = []
         
+        # Process crime scene lanes (each = separate sample)
         for i, lane in enumerate(crime_lanes):
             features = self._extract_lane_features(lane)
             lane_features.append(features)
             lane_labels.append(f'Crime_Lane_{i+1}')
         
+        # Process suspect lanes (each = separate sample)
         for i, lane in enumerate(suspect_lanes):
             features = self._extract_lane_features(lane)
             lane_features.append(features)
@@ -272,9 +274,9 @@ class ForensicVisualizer:
                   leaf_rotation=45, leaf_font_size=10)
         
         # Styling
-        ax.set_title('Hierarchical Clustering of DNA Lane Patterns\nCrime Scene vs Suspect Samples', 
+        ax.set_title('Hierarchical Clustering of DNA Lane Patterns\nCrime Scene vs Suspect Samples\n(Each Lane = Separate Sample)', 
                     fontsize=16, fontweight='bold', pad=20)
-        ax.set_xlabel('DNA Lanes', fontsize=12, fontweight='bold')
+        ax.set_xlabel('DNA Lanes (Individual Samples)', fontsize=12, fontweight='bold')
         ax.set_ylabel('Distance', fontsize=12, fontweight='bold')
         
         # Color code the labels
@@ -454,27 +456,33 @@ class ForensicVisualizer:
             return image_base64
     
     def _extract_band_data(self, lanes):
-        """Extract band data from lanes using real data from processed images."""
+        """
+        Extract band data from lanes using real data from processed images.
+        Each lane represents a separate DNA sample in forensic analysis.
+        """
         bands = []
-        for lane in lanes:
+        for lane_idx, lane in enumerate(lanes):
             # Use real band data from the processed image
+            # Each lane = separate sample (Crime_Lane_1, Crime_Lane_2, etc. or Suspect_Lane_1, Suspect_Lane_2, etc.)
             if 'bands' in lane and 'intensities' in lane:
                 for i, (band_y, intensity) in enumerate(zip(lane['bands'], lane['intensities'])):
                     bands.append({
-                        'lane_x': lane.get('lane_x', 0),
+                        'lane_x': lane.get('lane_x', lane_idx * 100),  # Space lanes appropriately
                         'band_y': band_y,
                         'intensity': intensity,
-                        'lane_index': lane.get('lane_index', 0)
+                        'lane_index': lane_idx,  # Each lane gets unique index
+                        'sample_id': f'Lane_{lane_idx + 1}'  # Unique sample identifier
                     })
             else:
                 # Fallback if data structure is different
                 for i, band_y in enumerate(lane.get('bands', [])):
                     intensity = lane.get('intensities', [0.5] * len(lane.get('bands', [])))[i] if i < len(lane.get('intensities', [])) else 0.5
                     bands.append({
-                        'lane_x': lane.get('lane_x', 0),
+                        'lane_x': lane.get('lane_x', lane_idx * 100),  # Space lanes appropriately
                         'band_y': band_y,
                         'intensity': intensity,
-                        'lane_index': lane.get('lane_index', 0)
+                        'lane_index': lane_idx,  # Each lane gets unique index
+                        'sample_id': f'Lane_{lane_idx + 1}'  # Unique sample identifier
                     })
         return bands
     
@@ -541,10 +549,14 @@ class ForensicVisualizer:
         return feature_vectors
     
     def _prepare_scatter_data(self, lanes, sample_type):
-        """Prepare data for scatter plot using real band data from processed images."""
+        """
+        Prepare data for scatter plot using real band data from processed images.
+        Each lane represents a separate DNA sample in forensic analysis.
+        """
         data = []
-        for lane in lanes:
+        for lane_idx, lane in enumerate(lanes):
             # Use real band data from the processed image
+            # Each lane = separate sample (Crime_Lane_1, Crime_Lane_2, etc. or Suspect_Lane_1, Suspect_Lane_2, etc.)
             bands = lane.get('bands', [])
             intensities = lane.get('intensities', [])
             
@@ -556,12 +568,13 @@ class ForensicVisualizer:
             for i, band_y in enumerate(bands):
                 intensity = intensities[i] if i < len(intensities) else 0.5
                 data.append({
-                    'Lane_Position': lane.get('lane_x', 0),
+                    'Lane_Position': lane.get('lane_x', lane_idx * 100),  # Space lanes appropriately
                     'Band_Position': band_y,
                     'Intensity': intensity,
                     'Band_Size': 1.0 + (intensity * 0.5),  # Size based on real intensity
                     'Sample_Type': sample_type,
-                    'Lane_Index': lane.get('lane_index', 0)
+                    'Lane_Index': lane_idx,  # Each lane gets unique index
+                    'Sample_ID': f'{sample_type}_Lane_{lane_idx + 1}'  # Unique sample identifier
                 })
         return pd.DataFrame(data)
     
